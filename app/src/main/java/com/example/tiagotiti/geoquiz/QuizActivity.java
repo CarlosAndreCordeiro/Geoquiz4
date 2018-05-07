@@ -128,14 +128,22 @@ public class QuizActivity extends AppCompatActivity {
     private void checaResposta(boolean respostaUsuario){
         boolean resposta = questoes[indiceQuestoes].isResposta();
         int idPergunta;
+
+        if(mCheater) {
+            idPergunta = R.string.licao_moral;
+            pontuacao++;
+        } else{
+
+
         if(resposta== respostaUsuario){
          idPergunta = R.string.correto;
 
          pontuacao++;
          mPontuacao.setText(String.valueOf(pontuacao));
 
-        } else{
+        } else {
             idPergunta = R.string.incorreto;
+        }
         }
         Toast.makeText(this, idPergunta, Toast.LENGTH_SHORT).show();
     }
